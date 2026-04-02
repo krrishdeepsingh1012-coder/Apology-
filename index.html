@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sister 🤍</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#fce4ec,#e3f2fd);
+    overflow:hidden;
+    color:#444;
+}
+
+.section{
+    display:none;
+    height:100vh;
+    width:100vw;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.section.active{display:flex; animation:fade 1s;}
+
+h1,h2,h3{color:#d81b60;}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:#ff80ab;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{transform:scale(1.08); background:#d81b60;}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    max-width:350px;
+}
+
+@keyframes fade{from{opacity:0} to{opacity:1}}
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:float 4s linear forwards;
+}
+
+@keyframes float{
+    to{transform:translateY(-110vh); opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro" class="section active">
+    <h1>Hey Baccha 🤍</h1>
+    <p>I made something for you...</p>
+    <button onclick="next('apology')">Click here</button>
+</div>
+
+<div id="apology" class="section">
+    <div class="card">
+        <h2>I’m Really Sorry 😔</h2>
+        <p>I know I’ve been rude lately... and I hate it when we’re not okay.</p>
+        <p>You’re not just my sister, you’re my comfort person.</p>
+        <button onclick="next('project')">Please hear me out</button>
+    </div>
+</div>
+
+<div id="project" class="section">
+    <div class="card">
+        <h2>Also... I Did It 💻✨</h2>
+        <p>Remember the project I told you about?</p>
+        <p>I finally completed it 🥹</p>
+        <p>I really wanted YOU to see it first.</p>
+        <button onclick="next('link')">See My Project</button>
+    </div>
+</div>
+
+<div id="link" class="section">
+    <div class="card">
+        <h2>This is for you 🤍</h2>
+        <p>Click below to see what I built</p>
+        <a id="projectLink" href="#" target="_blank">
+            <button>Open My Website 🚀</button>
+        </a>
+        <br><br>
+        <button onclick="next('final')">One last thing...</button>
+    </div>
+</div>
+
+<div id="final" class="section">
+    <div class="card">
+        <h2>To My Baccha 🌷</h2>
+        <p>I’m truly sorry for everything.</p>
+        <p>I promise I’ll be better.</p>
+        <p>I miss us being normal 😞</p>
+        <h3>Please forgive me? 🤍</h3>
+    </div>
+</div>
+
+<script>
+function next(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    hearts();
+}
+
+function hearts(){
+    for(let i=0;i<6;i++){
+        let h=document.createElement('div');
+        h.className='heart';
+        h.innerText='🤍';
+        h.style.left=Math.random()*100+'vw';
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),4000);
+    }
+}
+
+// 👉 IMPORTANT: PASTE YOUR PROJECT LINK HERE
+// Example:
+// document.getElementById('projectLink').href = "https://yourwebsite.com";
+
+</script>
+
+</body>
+</html>
